@@ -15,3 +15,6 @@ RUN git clone https://review.sourcearcade.org/libgfxinit.git
 
 RUN cd libhwbase && git fetch origin refs/changes/75/475/1 && git rebase FETCH_HEAD
 RUN cd libhwbase && make -j$(nproc) cnf=configs/linux install
+
+COPY ci.sh /
+ENTRYPOINT ["/bin/sh", "/ci.sh"]
